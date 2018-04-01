@@ -1,0 +1,101 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.clearfix::after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+body{
+	height: 100vh;
+	font-family: keyboard, "Arial Rounded", Helvetica, Arial, sans-serif;
+	background: grey url(../images/bgc2-min.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.key{
+	height: 69px;
+	font-size: 24px;
+	text-align: center;
+	float: left;
+	display: block;
+	padding: 0 12px;
+	margin: 0 12px 12px 0;
+	border-radius:8px;
+	background-color: #000;
+	color: #fff;
+	box-shadow: 5px 10px 15px 0px rgba(0,0,0,0.6);
+}
+
+#main .row{
+	display: inline-block;
+}
+
+#main .row .key .text{
+	width: 47px;
+	display: block;
+	height: 50%;
+	line-height: 35px;
+}
+
+#main .row:nth-child(1) .key:last-child .text,
+#main .row:nth-child(2) .key:first-child .text{
+	width: 96px;
+}
+
+#main .row:nth-child(3) .key:first-child .text,
+#main .row:nth-child(3) .key:last-child .text{
+	width: 114px;
+	line-height: 35px;
+	font-size: 16px;
+	text-align: right;
+}
+
+#main .row:nth-child(5) .key:nth-child(11) .text,
+#main .row:nth-child(5) .key:nth-child(8) .text,
+#main .row:nth-child(5) .key:nth-child(9) .text,
+#main .row:nth-child(5) .key:nth-child(10) .text{
+	line-height: 69px;
+}
+
+#main .row:nth-child(5) .key:nth-child(6) .text,
+#main .row:nth-child(5) .key:nth-child(4) .text,
+#main .row:nth-child(5) .key:nth-child(2) .text,
+#main .row:nth-child(5) .key:first-child .text,
+#main .row:nth-child(4) .key:first-child .text,
+#main .row:nth-child(2) .key:first-child .text,
+#main .row:nth-child(3) .key:first-child .text{
+	text-align: left;
+	line-height: 69px;
+	font-size: 16px;
+}
+
+#main .row:nth-child(1) .key:last-child .text,
+#main .row:nth-child(4) .key:last-child .text{
+	text-align: right;
+	line-height: 69px;
+	font-size: 16px;
+}
+
+#main .row:nth-child(4) .key:first-child .text,
+#main .row:nth-child(4) .key:last-child .text{
+	width: 155px;
+}
+
+#main .row:nth-child(5) .key{
+	font-size: 16px;
+}
+
+ #main .row:nth-child(5) .key:nth-child(5) .text{
+	width:346px;
+}
+
+#mainWrapper{
+	text-align: center;
+	margin-top: 160px;
+}

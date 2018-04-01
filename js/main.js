@@ -1,68 +1,121 @@
-var keys = [
-			['q','w','e','r','t','y','u','i','o','p'],
-			['a','s','d','f','g','h','j','k','l'],
-			['z','x','c','v','b','n','m']
-		]
-var hash = {
-	'q': 'qq.com',
-	'w': 'weibo.com',
-	'e': 'ele.me',
-	'r': 'renren.com',
-	't': 'tianya.com',
-	'y': 'youtube.com',
-	'u':  'uc.com',
-	'i':  'iqiyi.com',
-	'o': 'opera.com',
-	'p': undefined,
-	'a': 'acfun.tv',
-	's': 'sohu.com',
-	'z': 'zhihu.com',
-	'm': 'https://www.mcdonalds.com.cn/',
-	'b':'baidu.com'
-}
-
 window.onload = function(){
-	var hashInlocalStorage = JSON.parse(localStorage.getItem("urlContainer") || "null");
-	if(hashInlocalStorage){
-		hash = hashInlocalStorage;
-	}
-	kbdNav();
-	keyEvent();
+	listenToKeybord(hash);
+	mainTag();
 }
 
-function tag(tagName){
-	return document.createElement(tagName);
+var keys = {
+	'0':[
+		['~', '`'],
+		['!', '1'],
+		['@', '2'],
+		['#', '3'],
+		['$', '4'],
+		['%', '5'],
+		['^', '6'],
+		['&', '7'],
+		['*', '8'],
+		['(', '9'],
+		[')', '0'],
+		['_', '-'],
+		['+', '='],
+		['delete']
+	],
+	'1':[
+		['tab'],
+		['Q'],
+		['W'],
+		['E'],
+		['R'],
+		['T'],
+		['Y'],
+		['U'],
+		['I'],
+		['O'],
+		['P'],
+		['{', '['],
+		['}', ']'],
+		['|','\\']
+	],
+	'2':[
+		['caps lock'],
+		['A'],
+		['S'],
+		['D'],
+		['F'],
+		['G'],
+		['H'],
+		['J'],
+		['K'],
+		['L'],
+		[':',';'],
+		['"', '\''],
+		['enter', 'return']
+	],
+	'3':[
+		['shift'],
+		['Z'],
+		['X'],
+		['C'],
+		['V'],
+		['B'],
+		['N'],
+		['M'],
+		['<',','],
+		['>','.'],
+		['?','/'],
+		['shift']
+	],
+	'4':[
+		['fn'],
+		['control'],
+		['alt','option'],
+		['Command'],
+		[' '],
+		['command'],
+		['alt','aption'],
+		['←'],
+		['↑'],
+		['↓'],
+		['→']
+	]
 }
 
-function keyEvent(){
-	document.onkeypress = function(keyValue){
-		var value = keyValue['key'];
-		var website = hash[value];
-		window.open("http://"+website , "_blank");
-	}
-}
-
-function kbdNav(){
-	for(var i = 0; i < keys.length; i++){
-		var row = keys[i];
-		var divs = tag('div');
-		for(var j = 0; j < row.length; j++){
-			var kbds = tag('kbd');
-			var buttons = tag('button');
-			  buttons.id = row[j];
-			buttons.onclick = function(keyValue){
-				var btId = keyValue['target']['id'];
-				var gainUrl = prompt("（网址不需要输入http://）请编辑网址：");
-				hash[btId] = gainUrl;
-				localStorage.setItem('urlContainer', JSON.stringify(hash));
+var hash = {'q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 'r': 'renren.com', 't': 'tianya.com', 'y': 'youtube.com', 'u': 'uc.com' , 'i': 'iqiyi.com', 'o': 'opera.com', 'p': undefined, 'a': 'acfun.tv', 's': 'sohu.com', 'z': 'zhihu.com', 'm': 'www.mcdonalds.com.cn'
 			}
-			buttons.textContent = "编辑";
-			kbds.className = 'key';
-			kbds.textContent = row[j];
-			kbds.appendChild(buttons);
+
+function tag(tagName,attribute,tagChild){
+	var element = document.createElement(tagName);
+	for(var key in attribute){
+		element[key] = attribute[key];
+	}
+	return element;
+}
+
+function listenToKeybord(hash){
+	document.onkeypress = function(keybord){
+		var website = hash[keybord['key']];
+		window.open('http://'+website,'_blank');
+	}
+}
+
+function createkbd(){
+
+}
+
+function mainTag(){
+	for(var key in keys){
+		var row = keys[key];
+		var divs = tag('div',{'className':'row clearfix'})
+		for(var key1 in row){
+			var kbds = tag('kbd',{'className':'key'},spans);
+			for(var key2 in row[key1]){
+				var row1 = row[key1];
+				var content = row1[key2];
+				var spans = tag('span',{'className':'text','textContent':content});
+				kbds.appendChild(spans);
+			}
 			divs.appendChild(kbds);
 		}
-		keyboard.appendChild(divs);
+		mainWrapper.appendChild(divs);
 	}
 }
-
