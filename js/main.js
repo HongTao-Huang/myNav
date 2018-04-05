@@ -1,7 +1,7 @@
 window.onload = function(){
-    // var hashA = init();
-    // var hash = hashA['hash'];
-    // var keys = hashA['keys'];
+    var hashA = init();
+    var hash = hashA['hash'];
+    var keys = hashA['keys'];
 
     // 监听按键按下
 	listenToKeybord(hash);
@@ -9,9 +9,9 @@ window.onload = function(){
 	listenButton();
     //  生成键盘
     // 遍历 keys，生成 kbd 标签
-	mainTag();
+	mainTag(keys,hash);
 }
-// function init() {
+function init() {
 
 
     var keys = {
@@ -111,11 +111,11 @@ window.onload = function(){
     if(hashInLocalStorage){
         hash = hashInLocalStorage;
     }
-//     return {
-//         'keys':keys,
-//         'hash':hash
-//     }
-// }
+    return {
+        'keys':keys,
+        'hash':hash
+    }
+}
 
 // 读取localStorage中存储的数据    函数
 function getFromLocalStorage(name){
@@ -175,7 +175,7 @@ function createImage(domain , id){
 }
 
 //生成键盘
-function mainTag(){
+function mainTag(keys,hash){
 	for(var key in keys){
 		var row = keys[key];
 		var divs = tag('div',{'className':'row clearfix'})
