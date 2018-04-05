@@ -2,8 +2,13 @@ window.onload = function(){
     // var hashA = init();
     // var hash = hashA['hash'];
     // var keys = hashA['keys'];
+
+    // 监听按键按下
 	listenToKeybord(hash);
+	// 监听编辑按钮
 	listenButton();
+    //  生成键盘
+    // 遍历 keys，生成 kbd 标签
 	mainTag();
 }
 // function init() {
@@ -111,10 +116,13 @@ window.onload = function(){
 //         'hash':hash
 //     }
 // }
+
+// 读取localStorage中存储的数据    函数
 function getFromLocalStorage(name){
     return JSON.parse(localStorage.getItem(name) || 'null');
 }
 
+// 创建标签 添加属性 函数
 function tag(tagName,attribute,tagChild){
 	var element = document.createElement(tagName);
 	for(var key in attribute){
@@ -123,6 +131,7 @@ function tag(tagName,attribute,tagChild){
 	return element;
 }
 
+//监听按键
 function listenToKeybord(hash){
 	document.onkeypress = function(keybord){
 		var website = hash[keybord['key']];
@@ -130,6 +139,7 @@ function listenToKeybord(hash){
 	}
 }
 
+//监听编辑按键
 function listenButton(){
     btnEditor.onclick = function () {
         var x = prompt('给我一个网址(格式为q://lol.qq.com q:为指定要修改的按键)');
@@ -150,8 +160,9 @@ function listenButton(){
     }
 }
 
+// 创建图像 添加src
 function createImage(domain , id){
-    var img = tag('img',{'id':id})
+    var img = tag('img',{'id':id});
     if(domain){
         img.src = 'http://'+ domain + '/favicon.ico'
     }else{
@@ -159,10 +170,11 @@ function createImage(domain , id){
     }
     img.onerror = function(xxx){
         xxx.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
-    }
+    };
     return img
 }
 
+//生成键盘
 function mainTag(){
 	for(var key in keys){
 		var row = keys[key];
