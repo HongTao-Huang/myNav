@@ -43,6 +43,11 @@ body{
 	line-height: 35px;
 }
 
+#main .row .key img{
+	height: 16px;
+	width: 16px;
+}
+
 #main .row:nth-child(1) .key:last-child .text,
 #main .row:nth-child(2) .key:first-child .text{
 	width: 96px;
@@ -65,7 +70,11 @@ body{
 
 #main .row:nth-child(5) .key:nth-child(6) .text,
 #main .row:nth-child(5) .key:nth-child(4) .text,
-#main .row:nth-child(5) .key:nth-child(2) .text,
+#main .row:nth-child(5) .key:nth-child(2) .text{
+	line-height: 69px;
+	font-size: 16px;
+	width: 60px;
+}
 #main .row:nth-child(5) .key:first-child .text,
 #main .row:nth-child(4) .key:first-child .text,
 #main .row:nth-child(2) .key:first-child .text,
@@ -92,10 +101,25 @@ body{
 }
 
  #main .row:nth-child(5) .key:nth-child(5) .text{
-	width:346px;
+	width:303px;
 }
 
 #mainWrapper{
 	text-align: center;
 	margin-top: 160px;
+}
+
+.btnwrapper{
+	margin-top: 30px;
+	text-align: center;
+}
+
+#btnEditor{
+	border:none;
+	background-color: #000;
+	color: #fff;
+	display: inline-block;
+	padding: 20px 50px;
+	border-radius: 3px;
+	box-shadow: 5px 10px 15px 0px rgba(0,0,0,0.5);
 }
