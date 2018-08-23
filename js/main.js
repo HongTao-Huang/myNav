@@ -6,14 +6,12 @@ window.onload = function(){
     // 监听按键按下
 	listenToKeybord(hash);
 	// 监听编辑按钮
-	listenButton();
+	listenButton(hash);
     //  生成键盘
     // 遍历 keys，生成 kbd 标签
 	mainTag(keys,hash);
 }
 function init() {
-
-
     var keys = {
         '0': [
             ['~', '`'],
@@ -90,7 +88,6 @@ function init() {
             ['→']
         ]
     };
-
     var hash = {
         'q': 'qq.com',
         'w': 'weibo.com',
@@ -140,9 +137,9 @@ function listenToKeybord(hash){
 }
 
 //监听编辑按键
-function listenButton(){
+function listenButton(hash){
     btnEditor.onclick = function () {
-        var x = prompt('给我一个网址(格式为q://lol.qq.com q:为指定要修改的按键)');
+        var x = prompt('给我一个网址(格式为q:lol.qq.com  q:为指定要修改的按键, 不要有空格哦)');
         if(x){
         	var key = x[0];
         	if(key >= 'a' && key <= 'z')
