@@ -132,7 +132,7 @@ function tag(tagName,attribute,tagChild){
 function listenToKeybord(hash){
 	document.onkeypress = function(keybord){
 		var website = hash[keybord['key']];
-		window.open('http://'+website,'_blank');
+		window.open('https://'+website,'_blank');
 	}
 }
 
@@ -145,7 +145,7 @@ function listenButton(hash){
         	if(key >= 'a' && key <= 'z')
 			{
 				var imag = document.getElementById(key);
-                var website ='https://' + x.substr(2);
+                var website =x.substr(2);
                 hash[key] = website;
                 imag.src = 'http://'+ website+ '/favicon.ico';
                 imag.onerror = function(xxx){
