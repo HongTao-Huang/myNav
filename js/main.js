@@ -145,7 +145,7 @@ function listenButton(hash){
         	if(key >= 'a' && key <= 'z')
 			{
 				var imag = document.getElementById(key);
-                var website = x.substr(2);
+                var website ='https://' + x.substr(2);
                 hash[key] = website;
                 imag.src = 'http://'+ website+ '/favicon.ico';
                 imag.onerror = function(xxx){
